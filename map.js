@@ -481,18 +481,18 @@ function drawMap2BySex(data, geoData, metric, selectedYear, mapGroup, path, svg,
     // Bivariate color scale 9x9
     const n = 3;
     const colors = schemes[0].colors;
-    const xValues = filteredData.filter(d => d.sex === "Male").map(d => d[metric]);
-    const yValues = filteredData.filter(d => d.sex === "Female").map(d => d[metric]);
+    const xValues = filteredData.filter(d => d.sex === "Female").map(d => d[metric]);
+    const yValues = filteredData.filter(d => d.sex === "Male").map(d => d[metric]);
 
     const xScale = d3.scaleQuantile(xValues, d3.range(n));
     const yScale = d3.scaleQuantile(yValues, d3.range(n));
 
     const color = (values) => {
-        if (!values || values.male == null || values.female == null) {
+        if (!values || values.female == null || values.male == null) {
             return "url(#missing-data-pattern)";
         };
-        const x = xScale(values.male);
-        const y = yScale(values.female);
+        const x = xScale(values.female);
+        const y = yScale(values.male);
         return colors[y * n + x];
     };
 
@@ -628,18 +628,18 @@ function drawMap2ByBirthplace(data, geoData, metric, selectedYear, mapGroup, pat
     // Bivariate color scale 9x9
     const n = 3;
     const colors = schemes[0].colors;
-    const xValues = filteredData.filter(d => d.birthplace === "Native").map(d => d[metric]);
-    const yValues = filteredData.filter(d => d.birthplace === "Foreign").map(d => d[metric]);
+    const xValues = filteredData.filter(d => d.birthplace === "Foreign").map(d => d[metric]);
+    const yValues = filteredData.filter(d => d.birthplace === "Native").map(d => d[metric]);
 
     const xScale = d3.scaleQuantile(xValues, d3.range(n));
     const yScale = d3.scaleQuantile(yValues, d3.range(n));
 
     const color = (values) => {
-        if (!values || values.native == null || values.foreign == null) {
+        if (!values || values.foreign == null || values.native == null) {
             return "url(#missing-data-pattern)";
         };
-        const x = xScale(values.native);
-        const y = yScale(values.foreign);
+        const x = xScale(values.foreign);
+        const y = yScale(values.native);
         return colors[y * n + x];
     };
 
