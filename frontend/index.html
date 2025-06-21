@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project</title>
+  <!-- global style -->
+  <link rel="stylesheet" href="style.css">
+  <!-- <link rel="icon" href="public/favicon.png" /> -->
+  <!-- d3: most current version online -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/d3"></script> -->
+  <!-- d3: version given with the assignment -->
+  <script src="./d3.v7.min.js"></script>
+  <script src="donut.js"></script>
+  <script src="map.js"></script>
+  <script src="scatter.js"></script>
+</head>
+
+<body>
+  <nav>
+    <!-- <img src="public/favicon.png" alt="logo" id="logo" /> -->
+    <!-- <span><b>PCIV</b> Assignment: 5</span> -->
+    <span class="divider"></span>
+    <!-- <span>Ziqian Mo</span> -->
+  </nav>
+  <div>
+    <main>
+      <p></p>
+      <div class="center-container">
+        <h1>Your Chance in European Labour Market</h1>
+      </div>
+      <p>
+        As globalization continues to shape economies, 
+        the European labour market attracts professionals from diverse backgrounds and qualifications. 
+        Factors such as gender, nationality, and education level may influence their employment. 
+        But who exactly makes up the European labor market? How many people belong to each group?
+      </p>
+      <p>
+        The sunburst chart below doesn’t just display broad categories but also reveals the subgroups within them. 
+        Click the rings to explore different segments and adjust oders to see how various groups are represented in the workforce.
+      </p>
+      <div class="center-container">
+        <div id="donut-container"></div>
+      </div>
+      <p>
+        Regardless of which group you belong to, working conditions vary significantly from country to country. 
+        In one place, you might find opportunities, while in another, you could face challenges. 
+        So how can you identify the most favorable destination for you?
+      </p>
+      <p>Use the Metric menu to have a brief overview of key metrics in Europe labour market.</p>
+      <p>For deeper insights, use the Category menu to view male/female and native/foreign comparisons.</p>
+      <div class="metrics">
+        <p><strong>Working Age Population</strong> - 
+          The total number of individuals (in thousands) who are of working age. 
+          This consists of three types of people:
+        </p>
+        <p>
+          <strong>1.</strong> Those who have a job.  
+          <strong>2.</strong> Those who don’t have a job but are actively seeking one.  
+          <strong>3.</strong> Those who don’t have a job and are not looking for one.  
+        </p>
+        <p><strong>Labour Force Participation Rate</strong> - 
+          The percentage of the working-age population that is active in the labour market,  
+          meaning they either have a job or are actively seeking one.  
+        </p>
+        <p><strong>Employment-to-Population Ratio</strong> - 
+          The share of the working-age population that is currently employed.  
+        </p>
+      
+        <p><strong>Unemployment Rate</strong> - 
+          The percentage of individuals actively looking for a job within the total labour force.  
+        </p>
+      </div>
+      <div class="center-container">
+        <div id="map-container"></div>
+      </div>
+      <p>
+        While external conditions certainly influence employment opportunities, they aren’t the only factor. 
+        Entering and staying in the job market also requires personal effort and resilience, 
+        and this experience can differ widely across groups. 
+        The Labour Force Participation Rate reflects people's determination and willingness in the job market 
+        - whether by seeking employment or holding onto jobs, 
+        while the Unemployment Rate indicates the challenges and barriers they face in finding and securing work.
+      </p>
+      <p>
+        Use the checkboxes to select your interested groups. 
+        Explore the ambition, opportunity, and obstacles in the European labour market.
+      </p>
+      <div class="center-container">
+        <div id="scatter-container"></div>
+      </div>
+      <p></p>
+    </main>
+  </div>
+</body>
+
+
+</html>
+
+
+
+<script type="module">
+
+  async function fetchData(endpoint) {
+    const response = await fetch(`http://localhost:8080/api/v1/${endpoint}`)
+    return await response.json()
+  }
+
+  async function loadData() {
+    const labourData = await fetchData("get_labour_data")
+    return labourData
+  }
+
+  async function main() {
+    console.log('main')
+    let labourData = await loadData()
+    drawDonuts(labourData);
+    drawMap(labourData);
+    drawScatter(labourData);
+  }
+
+
+
+  main()
+</script>

@@ -1,0 +1,126 @@
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    color-scheme: light;
+    color: #213547;
+    background-color: #ffffff;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+}
+
+h1 {
+    font-size: 3.2em;
+    line-height: 1.1;
+    text-align: center;
+}
+
+p {
+    margin-left: 100px;
+    margin-right: 128px;
+    text-align: justify;
+}
+
+.metrics {
+    font-size: 0.85em; /* Smaller font size */
+    line-height: 1.2; /* Shorter line spacing */
+    color: #555; /* Slightly muted color for better readability */
+  }
+
+nav {
+    font-size: 1.2em;
+    display: flex;
+    padding: 1em;
+    align-items: center;
+    background-color: #242424;
+    color: white;
+}
+
+nav>#logo {
+    height: 2em;
+    margin-right: 0.66em;
+}
+
+.divider {
+    flex-grow: 1;
+}
+
+#donut-container {
+    width: 1200px;
+    height: 600px;
+    margin-left: 200px;
+}
+
+#map-container {
+    width: 1200px;
+    height: 680px;
+    border: 2px solid #333;
+    padding: 10px;
+    margin-left: 100px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+	position: relative;
+}
+
+#scatter-container {
+    width: 1200px;
+    height: 700px;
+    margin-left: 100px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.country {
+    /* fill: #ccc; */
+    stroke: #000;
+    stroke-width: 0.5;
+}
+
+.country:hover {
+    stroke: #000000;
+    stroke-width: 2;
+    /* fill: orange; */
+}
+
+#layout {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+#dropdown-container {
+    flex: 1;
+    min-width: 200px;
+}
+
+#legend-container {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* Tooltip styling */
+.maptooltip {
+    position: absolute;
+    padding: 8px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    pointer-events: none; /* Prevent tooltip from blocking mouse events */
+    font-size: 12px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    display: none; /* Hidden by default */
+    z-index: 10;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px; /* Space between checkboxes */
+
+    align-items: center;
+    margin-left: 700px; /* Moves the container down */
+}
