@@ -1,6 +1,6 @@
 # Labour Data Visualization Project
 
-👉 **[View Project](https://j4vixq.github.io/Labour-Market-Analysis-and-Visualization/)**
+👉 **[View Project](https://j4vixq.github.io/Labour-Market-Analysis/)**
 
 ---
 
